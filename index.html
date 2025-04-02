@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FaceGuard Browser</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <img src="logo.png" alt="FaceGuard Logo">
+        <h1>FaceGuard</h1>
+      </div>
+      <div class="toggle-container">
+        <label class="switch">
+          <input type="checkbox" id="enableExtension" checked>
+          <span class="slider round"></span>
+        </label>
+        <span id="statusText">Enabled</span>
+      </div>
+    </header>
+
+    <main>
+      <div class="tab-container">
+        <div class="tab-buttons">
+          <button class="tab-button active" data-tab="protected-sites">Protected Sites</button>
+          <button class="tab-button" data-tab="face-management">Face Management</button>
+          <button class="tab-button" data-tab="settings">Settings</button>
+        </div>
+
+        <div class="tab-content">
+          <div id="protected-sites" class="tab-pane active">
+            <div class="add-site">
+              <input type="text" id="newSiteUrl" placeholder="Enter website URL...">
+              <button id="addSiteBtn">Add Site</button>
+            </div>
+            <div class="site-list" id="siteList">
+              <!-- Protected sites will be listed here -->
+              <div class="empty-message">No protected sites yet</div>
+            </div>
+          </div>
+
+          <div id="face-management" class="tab-pane">
+            <div class="face-container">
+              <div id="facePreview">
+                <video id="video" autoplay muted></video>
+                <canvas id="canvas" style="display:none;"></canvas>
+              </div>
+              <button id="captureBtn" class="primary-btn">Capture Face</button>
+              <button id="saveFaceBtn" class="success-btn" disabled>Save Face</button>
+            </div>
+            <div class="registered-faces" id="registeredFaces">
+              <!-- Registered faces will be displayed here -->
+              <div class="empty-message">No faces registered yet</div>
+            </div>
+          </div>
+
+          <div id="settings" class="tab-pane">
+            <div class="setting-item">
+              <label for="failedAttempts">Failed attempts before password:</label>
+              <input type="number" id="failedAttempts" min="1" max="5" value="3">
+            </div>
+            <div class="setting-item">
+              <label for="securityPassword">Backup Password:</label>
+              <input type="password" id="securityPassword">
+            </div>
+            <button id="saveSettingsBtn" class="primary-btn">Save Settings</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 FaceGuard - Secure Your Web</p>
+    </footer>
+  </div>
+
+  <script src="js/face-api.min.js"></script>
+  <script src="js/popup.js"></script>
+</body>
+</html>

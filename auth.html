@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FaceGuard Authentication</title>
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-header">
+      <img src="logo.png" alt="FaceGuard Logo">
+      <h1>Face Verification Required</h1>
+    </div>
+    
+    <div class="site-info">
+      <p>To access: <span id="siteUrl"></span></p>
+    </div>
+
+    <div class="face-verification">
+      <div class="video-container">
+        <video id="video" autoplay muted></video>
+        <canvas id="canvas" style="display:none;"></canvas>
+        <div class="face-overlay">
+          <div class="face-frame"></div>
+        </div>
+      </div>
+      
+      <div class="status-message" id="statusMessage">
+        Position your face in the frame
+      </div>
+      
+      <div class="attempt-counter">
+        Attempt: <span id="attemptCount">1</span>/<span id="maxAttempts">3</span>
+      </div>
+    </div>
+
+    <div class="password-fallback" id="passwordFallback" style="display:none;">
+      <h3>Too many failed attempts</h3>
+      <p>Please enter your backup password</p>
+      <input type="password" id="backupPassword" placeholder="Enter backup password">
+      <button id="submitPasswordBtn">Submit</button>
+    </div>
+
+    <div class="actions">
+      <button id="cancelBtn">Cancel</button>
+    </div>
+  </div>
+
+  <script src="js/face-api.min.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
